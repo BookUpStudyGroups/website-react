@@ -32,8 +32,10 @@ handleChangePassword(event) {
 }
 
   validateLogin(event) {
+    event.preventDefault();
     alert(`the email is: ${this.state.email}`);
     alert(`the pwis: ${this.state.password}`);
+    console.log('validateLogin');
 
 
   if( this.state.email == "" )
@@ -63,8 +65,10 @@ handleChangePassword(event) {
 
   } //validateLogin
 
-checkLoginForm(){
-if (this.validateLogin()==false){
+checkLoginForm(event){
+//  event.preventDefault();
+if (this.validateLogin(event)==false){
+  alert('validateLogin failed');
 return false;
 }else{
 
@@ -72,22 +76,24 @@ var username=this.state.email;
 var password=this.state.password;
 
 if(1==1) {
-  return true;
+//  return true;
 
 
-
+  console.log('validateLogin succeeded');
 
   Parse.User.logIn(username, password, {
 success: function(user) {
   // Do stuff after successful login.
 // window.location = "profile.php";
- alert('Lookee here you logged in!');
-return true;
+ console.log('Lookee here you logged in!');
+// return true;
 },
 error: function(user, error) {
   // The login failed. Check error to see why.
-alert("Error: User login failed. Please check your username and password.");
-return false;
+  console.log(JSON.stringify(user));
+  console.log(JSON.stringify(error));
+console.log("Error: User login failed. Please check your username and password.");
+ return false;
 }
 });
 }else{

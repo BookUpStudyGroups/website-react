@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Parse from 'parse';
-import './register.js';
+import Register from './register.js';
 import ReactDOM from 'react-dom';
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
     this.checkLoginForm =  this.checkLoginForm.bind(this);
     this.handleChangeEmail =  this.handleChangeEmail.bind(this);
     this.handleChangePassword =  this.handleChangePassword.bind(this);
-    this.register =  this.register.bind(this);
+  //  this.register =  this.register.bind(this);  // previous rerouting
   }
 
 clickedSomething(event) {
@@ -24,19 +24,18 @@ clickedSomething(event) {
    event.preventDefault();
   }
 
+// used in the previous version of rerouting.
+/*
 register(event) {
-  
+
   console.log('changing to register....');
-  window.location = 'register.js';
+  window.location = '/register.js';
   ReactDOM.render(
     <Register />,
-
-
     document.getElementById('root')
   );
-
-
 }
+*/
 
 handleChangeEmail(event) {
   this.setState({email: event.target.value});
@@ -48,8 +47,6 @@ handleChangePassword(event) {
 
   validateLogin(event) {
     event.preventDefault();
-    alert(`the email is: ${this.state.email}`);
-    alert(`the pwis: ${this.state.password}`);
     console.log('validateLogin');
 
 
@@ -93,7 +90,6 @@ var password=this.state.password;
 if(1==1) {
 //  return true;
 
-
   console.log('validateLogin succeeded');
 
   Parse.User.logIn(username, password, {
@@ -105,7 +101,6 @@ success: function(user) {
 },
 error: function(user, error) {
   // The login failed. Check error to see why.
-  console.log(JSON.stringify(user));
   console.log(JSON.stringify(error));
 console.log("Error: User login failed. Please check your username and password.");
  return false;
@@ -147,14 +142,11 @@ return false;
             </div>
 
             <div className="forgot_password"><a title="Forgot your password?" href="forgot-password.php">Forgot your password?</a></div>
-          <div className="dontac"><a onClick={this.register} href="register.js">Dont have an account?</a></div>
-
+          <div className="dontac"><a href="register">Dont have an account?</a></div>
 
           </form>
 
-              <button className="dontac"onClick={this.register}>Dont have an account?</button>
       </div>
-
 
       </div>
       </div>

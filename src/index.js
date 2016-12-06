@@ -4,38 +4,23 @@ import App from './App';
 import Register from './register';
 import './index.css';
 import Parse from 'parse';
+import { Router, Route, browserHistory } from 'react-router';
 
 Parse.serverURL = 'http://bookup-parse-server-dev.herokuapp.com/parse';
 Parse.initialize("myAppId");
 
+// the current version of routing.
+ReactDOM.render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App} />
+    <Route path="/register" component={Register} />
+  </Router>
+), document.getElementById('root'));
 
-function reroute() {
-let green;
-
-console.log(`window location is ${window.location}`);
-if (window.location === '/register.js') {
-  green= <Register />;
-} else {
-  green= <App /> ;
-}
-console.log(`green's value is ${JSON.stringify(green)}`);
-}
-
-function routing(props) {
-  return <App />;
-  /*
-  console.log(`window location is ${window.location}`);
-  if (window.location === '/') {
-    return <App />;
-  } else {
-    return <Register />;
-  }
-  */
-}
-
-
+// the previous version of routing.
+/*
 console.log(`IN INDEX WINDOW LOCATION IS ${window.location}`);
-if (window.location ==  'http://localhost:3000/register.js')
+if (window.location ==  '/')
  {
   console.log('look at this if statement woohoo');
   ReactDOM.render(
@@ -48,12 +33,4 @@ if (window.location ==  'http://localhost:3000/register.js')
     document.getElementById('root')
   );
 }
-
-
-/*
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 */

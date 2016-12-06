@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
- import Parse from 'parse';
- //var Parse = require('parse');
-// global.Parse = require('parse-1.6.14').Parse;
+import Parse from 'parse';
+import './register.js';
+import ReactDOM from 'react-dom';
 
 class App extends Component {
 
@@ -16,12 +16,27 @@ class App extends Component {
     this.checkLoginForm =  this.checkLoginForm.bind(this);
     this.handleChangeEmail =  this.handleChangeEmail.bind(this);
     this.handleChangePassword =  this.handleChangePassword.bind(this);
+    this.register =  this.register.bind(this);
   }
 
 clickedSomething(event) {
    alert(`the value of email is:${this.state.email}`);
    event.preventDefault();
   }
+
+register(event) {
+  
+  console.log('changing to register....');
+  window.location = 'register.js';
+  ReactDOM.render(
+    <Register />,
+
+
+    document.getElementById('root')
+  );
+
+
+}
 
 handleChangeEmail(event) {
   this.setState({email: event.target.value});
@@ -104,7 +119,6 @@ alert("Sorry! Site is currently undergoing development. We'll be back up soon!")
 return false;
 }
 
-
   render() {
     return (
       <div className="App">
@@ -133,9 +147,12 @@ return false;
             </div>
 
             <div className="forgot_password"><a title="Forgot your password?" href="forgot-password.php">Forgot your password?</a></div>
-          <div className="dontac"><a href="register.php">Dont have an account?</a></div>
+          <div className="dontac"><a onClick={this.register} href="register.js">Dont have an account?</a></div>
+
 
           </form>
+
+              <button className="dontac"onClick={this.register}>Dont have an account?</button>
       </div>
 
 

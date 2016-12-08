@@ -5,6 +5,9 @@ import Register from './register';
 import './index.css';
 import Parse from 'parse';
 import { Router, Route, browserHistory } from 'react-router';
+// import Bootstrap from 'bootstrap';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import JQuery from 'jquery';
 
 Parse.serverURL = 'http://bookup-parse-server-dev.herokuapp.com/parse';
 Parse.initialize("myAppId");

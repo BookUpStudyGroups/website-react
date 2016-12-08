@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 import Parse from 'parse';
 import Register from './register.js';
 import ReactDOM from 'react-dom';
+var styles = require('./style.css');
 
 class App extends Component {
 
@@ -84,8 +85,8 @@ if (this.validateLogin(event)==false){
 return false;
 }else{
 
-var username=this.state.email;
-var password=this.state.password;
+const username=this.state.email;
+const password=this.state.password;
 
 if(1==1) {
 //  return true;

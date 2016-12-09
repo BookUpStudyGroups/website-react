@@ -14,6 +14,7 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App} />
     <Route path="/register" component={Register} />
+    {/*<Route path="/forgotPassword" component={ForgotPassword} /> */}
   </Router>
 ), document.getElementById('root'));
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Parse from 'parse';
 import Register from './register.js';
+import ForgotPassword from './forgotPassword.js'
 import ReactDOM from 'react-dom';
 
 class App extends Component {
@@ -141,7 +142,7 @@ return false;
 
             </div>
 
-            <div className="forgot_password"><a title="Forgot your password?" href="forgot-password.php">Forgot your password?</a></div>
+            <div className="forgot_password"><a title="Forgot your password?" href="./forgotPassword.js">Forgot your password?</a></div>
           <div className="dontac"><a href="register">Dont have an account?</a></div>
 
           </form>

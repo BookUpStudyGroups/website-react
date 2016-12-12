@@ -128,26 +128,28 @@ return false;
     return (
       <div className="App">
       <div>
-      <Header /> 
+      <Header />
       </div>
         <div className="white_bg padding-page">
-          <div className="container">
-            <div className="col-xs-12 col-md-5 col-sm-7 col-centered">
+          <div className="container" style={{width: 500, height: 330,}}>
 
-      <div className="login_box">
+
+            {/*<div className="col-xs-12 col-md-5 col-sm-7 col-centered">*/}
+
+      <div className="login_box" style={{margin:'auto',}}>
         <div className="title" style={mundo}>Login to your BookUp account</div>
           <form onSubmit={this.checkLoginForm}>
-            <label>
+
               <div className="form-group">
                 <input type="text" className="form-control" name="email" placeholder="Enter email" onChange={this.handleChangeEmail}/>
               </div>
-            </label>
 
-            <label>
+
+
               <div className="form-group">
                 <input type="password" className="form-control" name="password" placeholder="Enter password" onChange={this.handleChangePassword}/>
               </div>
-            </label>
+
             <div className="submit">
               <button className="btn btn-default" title="Login" type="submit" name="si_submit" id="si_submit">Login</button>
 
@@ -160,7 +162,7 @@ return false;
 
       </div>
 
-      </div>
+      {/*</div>*/}
       </div>
       </div>
 

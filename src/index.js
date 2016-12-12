@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Register from './register';
+import ForgotPassword from './forgotPassword';
 import './index.css';
 import Parse from 'parse';
 import { Router, Route, browserHistory } from 'react-router';

@@ -511,7 +511,7 @@ background:url(../images/whitepolybg.png) no-repeat bottom center;
 
 
 .padding-page { padding-bottom:50px;}
-.login_box { background:#e5f8ff; height: inherit !important; border-radius:0 0 5px 5px; margin:0px 0px 0px 0px; padding:13px 15px 15px 15px; text-align:center;}
+.login_box { font-family: 'Mundo'; background:#e5f8ff; height: inherit !important; border-radius:0 0 5px 5px; margin:0px 0px 0px 0px; padding:13px 15px 15px 15px; text-align:center;}
 .login_box .title { font-size:26px; color:#4b89ad; padding-bottom:13px;}
 .login_box .form-group input { border:none; border-radius:0; background:#fff; min-height:40px; color:#777; font-size:14px; box-shadow: 0 0px 0px rgba(0, 0, 0, 0) inset;}
 .login_box .submit button { border:none; width:100%; border-radius:0; min-height:50px; background: #3E61C3; font-weight:bold; font-size:20px; color:#fff; margin-bottom:10px;}

@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import Parse from 'parse';
 import Register from './register.js';
 import ReactDOM from 'react-dom';
-var styles = require('./style.css');
+import { Grid, Navbar, Jumbotron, Button } from 'react-bootstrap';
+// var styles = require('./style.css');
+import './style.css';
+import Header from './header.js';
 
 class App extends Component {
 
@@ -19,6 +22,7 @@ class App extends Component {
     this.handleChangePassword =  this.handleChangePassword.bind(this);
   //  this.register =  this.register.bind(this);  // previous rerouting
   }
+
 
 clickedSomething(event) {
    alert(`the value of email is:${this.state.email}`);
@@ -115,16 +119,23 @@ alert("Sorry! Site is currently undergoing development. We'll be back up soon!")
 return false;
 }
 
+
   render() {
+
+      const mundo = {
+        font: 'Mundo',
+      };
     return (
       <div className="App">
-
+      <div>
+      <Header /> 
+      </div>
         <div className="white_bg padding-page">
           <div className="container">
             <div className="col-xs-12 col-md-5 col-sm-7 col-centered">
 
       <div className="login_box">
-        <div className="title">Login to your BookUp account</div>
+        <div className="title" style={mundo}>Login to your BookUp account</div>
           <form onSubmit={this.checkLoginForm}>
             <label>
               <div className="form-group">
@@ -152,9 +163,45 @@ return false;
       </div>
       </div>
       </div>
+
       </div>
     );
   }
+
+/*
+  render() {
+    return (
+      <div>
+        <Navbar inverse fixedTop>
+          <Grid>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <a href="/">React App</a>
+              </Navbar.Brand>
+              <Navbar.Toggle />
+            </Navbar.Header>
+          </Grid>
+        </Navbar>
+        <Jumbotron>
+          <Grid>
+            <h1>Welcome to React</h1>
+            <p>
+              <Button
+                bsStyle="success"
+                bsSize="large"
+                href="http://react-bootstrap.github.io/components.html"
+                target="_blank">
+                View React Bootstrap Docs
+              </Button>
+            </p>
+          </Grid>
+        </Jumbotron>
+      </div>
+    );
+  }
+  */
 }
+
+
 
 export default App;

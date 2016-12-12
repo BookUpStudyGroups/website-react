@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Register from './register';
+// import Header from './header';
 import './index.css';
 import Parse from 'parse';
 import { Router, Route, browserHistory } from 'react-router';
 // import Bootstrap from 'bootstrap';
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+ import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap-theme.css';
 import JQuery from 'jquery';
 
 Parse.serverURL = 'http://bookup-parse-server-dev.herokuapp.com/parse';

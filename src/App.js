@@ -140,15 +140,10 @@ return false;
             </label>
             <div className="submit">
               <button className="btn btn-default" title="Login" type="submit" name="si_submit" id="si_submit">Login</button>
-
             </div>
 
-<<<<<<< HEAD
-            <div className="forgot_password"><a title="Forgot your password?" href="./forgotPassword">Forgot your password?</a></div>
-=======
             <div className="forgot_password"><a title="Forgot your password?" href="forgotPassword">Forgot your password?</a></div>
->>>>>>> 8f559265b6217b6a34419d6d3ebbe75170d306da
-          <div className="dontac"><a href="register">Dont have an account?</a></div>
+            <div className="dontac"><a href="register">Dont have an account?</a></div>
 
           </form>
 

@@ -7,6 +7,7 @@ import { Grid, Navbar, Jumbotron, Button } from 'react-bootstrap';
 // var styles = require('./style.css');
 import './style.css';
 import Header from './header.js';
+import Footer from './footer.js';
 
 class App extends Component {
 
@@ -128,7 +129,7 @@ return false;
     return (
       <div className="App">
       <div>
-      <Header />
+      {/*<Header />*/}
       </div>
         <div className="white_bg padding-page">
           <div className="container" style={{width: 500, height: 330,}}>
@@ -166,6 +167,7 @@ return false;
       </div>
       </div>
 
+      {/*<Footer />*/}
       </div>
     );
   }

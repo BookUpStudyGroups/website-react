@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './forgotPassword.css';
 import Parse from 'parse';
+import './style.css'
 
 class ForgotPassword extends Component {
 
@@ -9,14 +9,9 @@ class ForgotPassword extends Component {
     this.state = {
       email: ""
     };
-    this.handleChangeEmail = this.handleChangeEmail.bind();
-    this.validateForgotPassword = this.validateForgotPassword.bind();
-    this.submitPasswordRequest = this.submitPasswordRequest.bind();
-  }
-
-//Password validation
-  handleChangeEmail(event) {
-    this.setState({email: event.target.value});
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.validateForgotPassword = this.validateForgotPassword.bind(this);
+    this.submitPasswordRequest = this.submitPasswordRequest.bind(this);
   }
 
   validateForgotPassword(event) {
@@ -26,18 +21,21 @@ class ForgotPassword extends Component {
       return false;
     }
 
-	  if( this.state.email.val().indexOf('@dartmouth.edu') == -1 ) {
-		  alert("Please enter a valid Dartmouth email address.");
-		  return false;
-	  }
+  	if( this.state.email.val().indexOf('@dartmouth.edu') == -1 ) {
+  		alert("Please enter a valid Dartmouth email address.");
+  		return false;
+  	}
 
     return true;
   } //validateForgotPassword
 
+  handleChangeEmail(event) {
+    this.setState({email: event.target.value});
+  }
 
   //Form checker for forgot password
   submitPasswordRequest(event) {
-    var returnVal = validateForgotPassword(event);
+    var returnVal = this.validateForgotPassword(event);
     if (returnVal == true) {
         var username = document.getElementById("fp_email").value;
 
@@ -80,29 +78,29 @@ class ForgotPassword extends Component {
 
 
   render() {
-    return ( <div>u 4got ur password lol@u</div>
-      // <div class="white_bg padding-page">
-      //   <div class="container">
-      //     <div class="col-xs-12 col-md-5 col-sm-7 col-centered">
-      //
-      //       <div class="login_box">
-      //         <div class="title">Enter your email</div>
-      //         <form method="post" action="" id="forgotpasswordform" onsubmit="return submitPasswordRequest();">
-      //           <div class="form-group">
-      //             <input type="email" class="form-control" placeholder="Enter your email" id="fp_email" name="fp_email" onClick={this.handleChangeEmail}/>
-      //           </div>
-      //
-      //           <div class="submit">
-      //             <button class="btn btn-default" title="Submit" type="submit" name="fp_submit" id="fp_submit">Submit</button>
-      //           </div>
-      //         </form>
-      //         <div class="dontac"><a href="register.php">Don't have an account?</a></div>
-      //         <div class="create_account"><a target="_blank" href="#">
-      //         </a></div>
-      //       </div>
-      //     </div>
-      //   </div>
-      // </div>
+    return (
+      <div class="white_bg padding-page">
+        <div class="container">
+          <div class="col-xs-12 col-md-5 col-sm-7 col-centered">
+
+            <div class="login_box">
+              <div class="title">Enter your email</div>
+              <form method="post" action="" id="forgotpasswordform" onsubmit="return submitPasswordRequest();">
+                <div class="form-group">
+                  <input type="email" class="form-control" placeholder="Enter your email" id="fp_email" name="fp_email" onClick={this.handleChangeEmail}/>
+                </div>
+
+                <div class="submit">
+                  <button class="btn btn-default" title="Submit" type="submit" name="fp_submit" id="fp_submit">Submit</button>
+                </div>
+              </form>
+              <div class="dontac"><a href="register">Don't have an account?</a></div>
+              <div class="create_account"><a target="_blank" href="#">
+              </a></div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }  // render
 } // component

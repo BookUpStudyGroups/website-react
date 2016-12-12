@@ -37,7 +37,7 @@ class ForgotPassword extends Component {
 
   //Form checker for forgot password
   submitPasswordRequest(event) {
-    var returnVal = validateForgotPassword(event);
+    var returnVal = this.validateForgotPassword(event);
     if (returnVal == true) {
         var username = document.getElementById("fp_email").value;
 

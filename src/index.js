@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Register from './register';
+import ForgotPassword from './forgotPassword';
 import './index.css';
 import Parse from 'parse';
 import { Router, Route, browserHistory } from 'react-router';
@@ -14,7 +15,7 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App} />
     <Route path="/register" component={Register} />
-    {/*<Route path="/forgotPassword" component={ForgotPassword} /> */}
+    <Route path="/forgotPassword" component={ForgotPassword} />
   </Router>
 ), document.getElementById('root'));
 

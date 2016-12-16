@@ -4,6 +4,8 @@ import Parse from 'parse';
 var styles = require('./style.css');
 
 import JQuery from 'jquery';
+import Header from './header.js';
+import Footer from './footer.js';
 
 class Register extends Component{
 
@@ -17,6 +19,7 @@ class Register extends Component{
       lname: "",
       cpassword: "",
       username: "",
+      totalClasses: [],
       classes: [],
     };
 
@@ -29,7 +32,83 @@ class Register extends Component{
     this.handleChangeCheckPassword =  this.handleChangeCheckPassword.bind(this);
     this.handleChangeUsername =  this.handleChangeUsername.bind(this);
 
+    this.loadRegForm = this.loadRegForm.bind(this);
+
   }
+
+  componentDidMount() {
+    this.loadRegForm().then((totalClasses) => {
+      console.log(`lets seee the total classes: ${totalClasses}`);
+
+      console.log(`LETS FIND THE STATE YAYYYYY ${JSON.stringify(this.state)}  `);
+      this.setState({totalClasses: totalClasses});
+
+// console.log(`AFTERWARDS: LETS FIND THE STATE YAYYYYY ${JSON.stringify(this.state)}  `);
+    });
+  }
+
+  //populate the registration page
+  loadRegForm() {
+    let totalClasses1 = [];
+    return new Promise((fulfill, reject) => {
+
+      console.log('in loadREgForm');
+        //Load in available classes to dropdown menus
+    var classes = Parse.Object.extend("Class");
+    var classQuery = new Parse.Query(classes);
+    classQuery.ascending("department","number");
+    classQuery.find({
+        success: function(groups) {
+          console.log('success in query!');
+      for (let i = 0; i < groups.length; i++) {
+          var prof=groups[i].get("prof");
+          var dep=groups[i].get("department");
+        var title=groups[i].get("title");
+        var id=groups[i].id;
+        var num=groups[i].get("number");
+        var per=groups[i].get("period");
+        console.log(`here's a bunch of data: ${prof} ${dep} ${title} ${id} ${num} ${per}`); //course-input
+    //    React.createElement('option', null, 'value="+id+">"+"["+dep+num+"] "+title+" with Professor "+prof+"' );
+    totalClasses1.push(
+    //  'value="+id+">"+"["+dep+num+"] "+title+" with Professor "+prof+"'
+    `[${dep}] ${title} with Prodessor ${prof}`
+    );
+
+
+  }  // for loop
+  fulfill(totalClasses1);
+        },
+        error: function(object, error) {
+          console.log('error in query');
+            // The object was not retrieved successfully.
+            // error is a Parse.Error with an error code and message.
+            alert("Error: Courses could not be retrieved.");
+            reject();
+        }
+    });
+
+
+    //  console.log(`${document}`);
+  //    document.getElementById('form-control').append("<option value="+id+">"+"["+dep+num+"] "+title+" with Professor "+prof+"</option>");
+    //	$(".form-control").append("<option value="+id+">"+"["+dep+num+"] "+title+" with Professor "+prof+"</option>");
+
+  /*
+        var classesRow = $(".classesrow").html();
+
+        if( ! $("#profilebody").length )
+        {
+
+          if( $(".classesrow").length == 1 )
+          {
+            console.log("insert row called on page load");
+            $("#classesrow1").after('<div class="classesrow" id="classesrow2">'+classesRow+'</div>');
+            $("#classesrow2 select").val('');
+          }
+        }
+        */
+    }); // promise
+
+    }
 
     validateRegister(event){
       event.preventDefault();
@@ -185,78 +264,87 @@ class Register extends Component{
 
 
   render() {
+    console.log(`wowee in render the state is: ${JSON.stringify(this.state)}`);
     return (
 
       <div className="white_bg padding-page">
           <div className="container">
-            <div className="col-xs-12 col-md-6 col-sm-7 col-centered">
+            {/*<div className="col-xs-12 col-md-6 col-sm-7 col-centered">*/}
+            <div>
 
             <div className="reg-title">Register your BookUp account</div>
                 <div className="login_box registration">
+
+                <form method="post" action="login.php" id="registerform" enctype="multipart/form-data" onSubmit={this.checkRegForm}>
+                  <div className="row">
+                    <div className="col-md-4 col-sm-4">
+                      <div className="form-group">
+                        <label htmlFor="fname">First Name</label>
+                        <input type="text" className="form-control" placeholder="First Name" name="fname" id="fname" onChange={this.handleChangeFname}/>
+                      </div>
+                    </div>
+
+                    <div className="col-md-4 col-sm-4">
+                      <div className="form-group">
+                        <label htmlFor="lname">Last Name</label>
+                        <input type="text" className="form-control" placeholder="Last Name" name="lname" id="lname" onChange={this.handleChangeLname} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email Address</label>
+                    <input type="email" className="form-control" placeholder="Email Address" name="email" id="email" onChange={this.handleChangeEmail}/>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" className="form-control" placeholder="Password" name="password" id="password" onChange={this.handleChangePassword}/>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="cpassword">Confirm Password</label>
+                    <input type="password" className="form-control" placeholder="Confirm Password" name="cpassword" id="cpassword" onChange={this.handleChangeCheckPassword}/>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="">Currently Registered Courses</label>
+
+                    <div className="classesrow" id="classesrow1">
+              <div className="row">
+                     <div className="col-md-8 col-sm-8">
+                        <select className="form-control" id="course-input">
+                          <option value="" disabled selected>Select a Class</option>
+                          {this.state.totalClasses.map((aClass) => {
+                            return <option> {aClass} </option>
+                          })}
+                        </select>
+                      </div>
+              </div>
+                    </div>
+
+                    <div className="form-group">
+                          <a className="btn btn-info" id="add-course-row">Add Course</a>
+                          <a className="btn btn-warning" id="remove-course-row">Remove Course</a>
+                    </div>
+                  </div>
+
+              <div className="form-group">
+                <label htmlFor="class_year">`Don't see your class? Request we add it below!`</label>
+                <input type="text" className="form-control" placeholder="Request class" name="class_name_custom" id="class_name_custom" value="" />
+              </div>
+                  <div className="form-group term">
+                    {/*<input type="checkbox" class="form-control" placeholder="Email Address">*/}
+                    <label>By clicking BookUp, you have read and agree to our <a href="terms-and-conditions.php" title="Terms and Conditions"><b>Terms and Conditions</b>.</a></label>
+                  </div>
+                  <div className="submit">
+                    <button className="btn btn-default" title="BookUp" type="reg_submit" name="reg_submit" id="submit">Submit</button>
+                  </div>
+                </form>
+
                 </div>
+
+                </div> {/*cols and shit */}
             </div>
 
-            <form method="post" action="login.php" id="registerform" enctype="multipart/form-data" onSubmit={this.checkRegForm}>
-              <div className="row">
-                <div className="col-md-4 col-sm-4">
-                  <div className="form-group">
-                    <label htmlFor="fname">First Name</label>
-                    <input type="text" className="form-control" placeholder="First Name" name="fname" id="fname" onChange={this.handleChangeFname}/>
-                  </div>
-                </div>
 
-                <div className="col-md-4 col-sm-4">
-                  <div className="form-group">
-                    <label htmlFor="lname">Last Name</label>
-                    <input type="text" className="form-control" placeholder="Last Name" name="lname" id="lname" onChange={this.handleChangeLname} />
-                  </div>
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email Address</label>
-                <input type="email" className="form-control" placeholder="Email Address" name="email" id="email" onChange={this.handleChangeEmail}/>
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input type="password" className="form-control" placeholder="Password" name="password" id="password" onChange={this.handleChangePassword}/>
-              </div>
-              <div className="form-group">
-                <label htmlFor="cpassword">Confirm Password</label>
-                <input type="password" className="form-control" placeholder="Confirm Password" name="cpassword" id="cpassword" onChange={this.handleChangeCheckPassword}/>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="">Currently Registered Courses</label>
-
-                <div className="classesrow" id="classesrow1">
-          <div className="row">
-                 <div className="col-md-8 col-sm-8">
-                    <select className="form-control" id="course-input">
-                      <option value="" disabled selected>Select a Class</option>
-                    </select>
-                  </div>
-          </div>
-                </div>
-
-                <div className="form-group">
-                      <a className="btn btn-info" id="add-course-row">Add Course</a>
-                      <a className="btn btn-warning" id="remove-course-row">Remove Course</a>
-                </div>
-              </div>
-
-          <div className="form-group">
-            <label htmlFor="class_year">`Don't see your class? Request we add it below!`</label>
-            <input type="text" className="form-control" placeholder="Request class" name="class_name_custom" id="class_name_custom" value="" />
-          </div>
-              <div className="form-group term">
-                {/*<input type="checkbox" class="form-control" placeholder="Email Address">*/}
-                <label>By clicking BookUp, you have read and agree to our <a href="terms-and-conditions.php" title="Terms and Conditions"><b>Terms and Conditions</b>.</a></label>
-              </div>
-              <div className="submit">
-                <button className="btn btn-default" title="BookUp" type="reg_submit" name="reg_submit" id="submit">Submit</button>
-              </div>
-            </form>
-          </div> {/*cols and shit */}
       {/*container */}  </div>
 
     );

@@ -7,9 +7,16 @@ import Footer from './footer.js';
 
 const MainLayout = React.createClass({
    render() {
+     // this part is so the footer doesn't end up halfway down the page.
+     let h;
+     if (window.innerHeight < 760) {
+       h = 760;
+     } else {
+       h = window.innerHeight + 30;
+     }
      const container = {
        width: window.innerWidth,
-       height: window.innerHeight,
+       height: h,
      };
 
       return (

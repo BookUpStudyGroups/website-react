@@ -63,13 +63,13 @@ handleChangePassword(event) {
     return false;
   }
 
-  /*
+
   if( this.state.email.indexOf('@dartmouth.edu') == -1 ){
     alert("Please enter a valid dartmouth email id.");
   //  $("#si_email").focus();
     return false;
   }
-  */
+
 
   if( this.state.password == "" )
   {
@@ -86,7 +86,7 @@ handleChangePassword(event) {
 checkLoginForm(event){
 //  event.preventDefault();
 if (this.validateLogin(event)==false){
-  alert('validateLogin failed');
+  // alert('validateLogin failed');
 return false;
 }else{
 
@@ -102,12 +102,14 @@ if(1==1) {
 success: function(user) {
   // Do stuff after successful login.
 // window.location = "profile.php";
+alert('login succeeded!');
  console.log('Lookee here you logged in!');
 // return true;
 },
 error: function(user, error) {
   // The login failed. Check error to see why.
   console.log(JSON.stringify(error));
+  alert('User login failed! Please check your username and passsword.');
 console.log("Error: User login failed. Please check your username and password.");
  return false;
 }

@@ -71,7 +71,9 @@ class Register extends Component{
     //    React.createElement('option', null, 'value="+id+">"+"["+dep+num+"] "+title+" with Professor "+prof+"' );
     totalClasses1.push(
     //  'value="+id+">"+"["+dep+num+"] "+title+" with Professor "+prof+"'
-    `[${dep}] ${title} with Prodessor ${prof}`
+  {  'id': id,
+    'text': `[${dep}] ${title} with Professor ${prof}`,
+  }
     );
 
 
@@ -313,7 +315,7 @@ class Register extends Component{
                         <select className="form-control" id="course-input">
                           <option value="" disabled selected>Select a Class</option>
                           {this.state.totalClasses.map((aClass) => {
-                            return <option> {aClass} </option>
+                            return <option key={aClass.id} value={aClass.id}> {aClass.text} </option>
                           })}
                         </select>
                       </div>

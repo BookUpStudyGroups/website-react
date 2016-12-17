@@ -3,7 +3,7 @@
   background:#e5f8ff;
   height: inherit !important;
   border-radius:0 0 5px 5px;
-  margin:0px 0 0 0; padding:13px 15px 15px 15px;
+  margin:0px 0px 0px 0px; padding:13px 15px 15px 15px;
   text-align:center;
 }
 
@@ -61,8 +61,8 @@
   .container {
     padding-right: 15px;
     padding-left: 15px;
-    margin-right: "auto";
-    margin-left: "auto";
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2,

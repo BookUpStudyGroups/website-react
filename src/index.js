@@ -6,7 +6,7 @@ import ForgotPassword from './forgotPassword';
 import './index.css';
 import Parse from 'parse';
 import { Router, Route, browserHistory } from 'react-router';
-import ForgotPassword from './forgotPassword.js'
+import './forgotPassword.js'
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
 Parse.serverURL = 'http://bookup-parse-server-dev.herokuapp.com/parse';

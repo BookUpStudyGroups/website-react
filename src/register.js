@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 // import './register.css';
 import Parse from 'parse';
+
 var styles = require('./style.css');
 
 import JQuery from 'jquery';
 import Header from './header.js';
 import Footer from './footer.js';
+
 
 class Register extends Component{
 

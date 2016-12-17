@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import './App.css';
 import Parse from 'parse';
 import Register from './register.js';
+import ForgotPassword from './forgotPassword.js'
 import ReactDOM from 'react-dom';
 import { Grid, Navbar, Jumbotron, Button } from 'react-bootstrap';
 // var styles = require('./style.css');
@@ -155,11 +156,10 @@ return false;
 
             <div className="submit">
               <button className="btn btn-default" title="Login" type="submit" name="si_submit" id="si_submit">Login</button>
-
             </div>
 
-            <div className="forgot_password"><a title="Forgot your password?" href="forgot-password.php">Forgot your password?</a></div>
-          <div className="dontac"><a href="register">Dont have an account?</a></div>
+            <div className="forgot_password"><a title="Forgot your password?" href="forgotPassword">Forgot your password?</a></div>
+            <div className="dontac"><a href="register">Dont have an account?</a></div>
 
           </form>
 

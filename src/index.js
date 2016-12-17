@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Register from './register';
+
 // import Header from './header';
 import './index.css';
+import ForgotPassword from './forgotPassword';
 import Parse from 'parse';
 import { Router, Route, browserHistory } from 'react-router';
 // import Bootstrap from 'bootstrap';
@@ -11,6 +13,7 @@ import { Router, Route, browserHistory } from 'react-router';
 // import 'bootstrap/dist/css/bootstrap-theme.css';
 import JQuery from 'jquery';
 import MainLayout from './mainLayout.js';
+
 
 Parse.serverURL = 'http://bookup-parse-server-dev.herokuapp.com/parse';
 Parse.initialize("myAppId");
@@ -23,6 +26,7 @@ ReactDOM.render((
     <Route component={MainLayout}>
       <Route path="/" component={App} />
       <Route path="/register" component={Register} />
+      <Route path="/forgotPassword" component={ForgotPassword} />
     </Route>
   </Router>
 ), document.getElementById('root'));
